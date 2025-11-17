@@ -1,4 +1,9 @@
 # Amplitude-Modulation
+NAME : SAHANA THASNEEM S.N
+
+REG NO : 212224060225
+
+DATE :
 
 EXP NO: 1	GENERATION AND DETECTION OF AM
 
@@ -75,18 +80,51 @@ Compare the original modulating signal with the demodulated signal. PROCEDURE
 •	Verify the generated waveform using Tabulation and Model Waveform
 
 Program
+```
+ac = 20;
+am = 14;
+fc = 1200;
+fm = 170;
+fs = 59000;
+t = 0:1/fs:2/fm;
 
+// Message signal
+e1 = ac * sin(2*%pi*fm*t);
+subplot(4,1,1);
+plot(t, e1);
+title("Message Signal");
+xgrid();
 
+// Carrier signal
+e2 = ac * sin(2*%pi*fc*t);
+subplot(4,1,2);
+plot(t, e2);
+title("Carrier Signal");
+xgrid();
 
-Output Waveform
+// AM signal
+e3 = (ac + am*sin(2*%pi*fm*t)) .* sin(2*%pi*fc*t);
+subplot(4,1,3);
+plot(t, e3);
+title("AM Signal");
+xgrid();
 
+// Demodulated signal using envelope detection
+demodulated_signal = abs(hilbert(e3)) - ac;
+subplot(4,1,4);
+plot(t, demodulated_signal);
+title("Demodulated Signal");
+xgrid();
+```
 
+Output Waveform :
 
+<img width="1120" height="623" alt="image" src="https://github.com/user-attachments/assets/58d3dcc0-58b2-40ff-9c5a-44122b6774e0" />
 
 
 TABULATION:
 
-
+<img width="720" height="1280" alt="image" src="https://github.com/user-attachments/assets/b03931a7-60dd-4dc7-b40d-28150b4c0b7c" />
 
 Calculation
 1.	ma (Theory) = am/ac =
@@ -95,10 +133,6 @@ Calculation
 
 MODEL GRAPH
  <img width="919" height="1290" alt="image" src="https://github.com/user-attachments/assets/55326c5b-7dd5-4873-aaf6-d219bb7c4420" />
-
- 
- 
-
 
 RESULT:
 Thus the amplitude modulation and demodulation is experimentally done and the output is verified.
